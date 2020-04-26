@@ -1,0 +1,576 @@
+/*! HTML5 Boilerplate v7.1.0 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 1.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Vendor-prefixed and regular ::selection selectors cannot be combined:
+ * https://stackoverflow.com/a/16982510/7133471
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  background-color: #f3f4f9;
+  overflow: hidden;
+}
+a {
+  text-decoration: none;
+}
+
+/* 实现页面布局 begin */
+.page-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.aside {
+  width: 180px;
+  flex-basis: 180px;
+  flex-shrink: 0; /*  打死都不收缩宽度， main-wrapper收缩吧 */
+  color: #fff;
+  background: rgb(51, 117, 214);
+}
+
+.main-wrapper {
+  /* page-wrapper aside main-wrapper 左右分割整个页面*/
+  flex-grow: 1;
+  /* main-wrapper分割为上下两个块:header 与 main  */
+  display: flex;
+  flex-direction: column;
+}
+
+.main-wrapper .header {
+  height: 60px;
+  flex-basis: 60px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  /* border: 2px solid red; */
+}
+
+.main-wrapper .main {
+  flex-grow: 1;
+  /* main分割为左右两个区:content 与 history  */
+  display: flex;
+}
+.main-wrapper .main .history {
+  width: 260px;
+  flex-basis: 260px;
+  flex-shrink: 0;
+}
+.main-wrapper .main .content {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.main-wrapper .main .content .notice {
+  height: 100px;
+  flex-basis: 100px;
+}
+.main-wrapper .main .content .desktop {
+  flex-grow: 1;
+}
+.main-wrapper .main .content .footer {
+  height: 100px;
+  flex-basis: 100px;
+  border: 1px solid green;
+}
+/* 布局部分 选择器path较长，只是为了提高只读性，后期去掉  */
+/* 实现页面布局 end */
+
+/* 左侧边栏 begin */
+
+.aside .logo {
+  width: 180px;
+  margin: 0 auto;
+}
+.aside .logo h1 {
+  margin-top: 20px;
+}
+
+.aside .logo a {
+  width: 265px;
+  height: 65px;
+  height: 0;
+  display: block;
+  /* 以上3行是为了强行设置 a 元素的高宽 */
+
+  padding-top: 65px;
+  overflow: hidden;
+  /* 以上2行是为了隐藏掉 a 元素中的文字 */
+
+  background: url("../images/logo.png") no-repeat left top / 100%;
+}
+.aside .logo .name {
+  text-align: center;
+}
+.aside .menu {
+  margin-top: 30px;
+}
+.aside .menu .menu-item {
+  height: 42px;
+  line-height: 42px;
+  padding-left: 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+  /* 定义左边框与背景同色，防止选中时文字的晃动 background: rgb(51, 117, 214); */
+  /* border-left: 5px solid rgb(51, 117, 214); */
+
+  transition: all 0.3s ease;
+}
+
+.aside .menu .menu-item:hover {
+  box-sizing: border-box;
+  background: #009688;
+  color: #e6e6e6;
+  /* #009688; */
+}
+
+.aside .menu .menu-item span {
+  padding-left: 16px;
+}
+.aside .menu .menu-item.selected {
+  background: rgb(25, 80, 162);
+  border-left: 5px solid rgb(20, 177, 222);
+  box-sizing: border-box;
+}
+/* 选择器path中的.aside可以去掉  */
+/* 左侧边栏 end */
+
+/* Header 区  begin */
+.header {
+  background: #fff;
+}
+.header .search {
+  text-align: center;
+}
+
+/* Header 区  end */
+
+.notice .desc {
+  overflow: hidden; /*创建bfc，防止外边距合并，也可以直接设置padding-top */
+  box-sizing: border-box;
+  margin: 10px;
+  /* padding: 10px 10x 0 10px; */
+  height: 80px;
+  border-radius: 3px;
+
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.desktop {
+  display: flex;
+  flex-flow: wrap;
+
+  justify-content: space-between;
+}
+.desktop .item {
+  box-sizing: border-box;
+  margin: 10px;
+  width: 240px;
+  height: 240px;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  transition: all 0.2s ease;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.desktop .item:hover {
+  box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2),
+    0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
+}
+
+.desktop .item .title-wrapper {
+  margin: 10px;
+
+  display: flex;
+}
+.desktop .item .icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+}
+.desktop .item:nth-child(1) .icon {
+  background: #f44336;
+}
+.desktop .item:nth-child(2) .icon {
+  background: #e91e63;
+}
+.desktop .item:nth-child(3) .icon {
+  background: #9c27b0;
+}
+.desktop .item:nth-child(4) .icon {
+  background: #673ab7;
+}
+.desktop .item:nth-child(5) .icon {
+  background: #03a9f4;
+}
+.desktop .item:nth-child(6) .icon {
+  background: #00bcd4;
+}
+
+.desktop .item:nth-child(7) .icon {
+  background: #009688;
+}
+.desktop .item:nth-child(8) .icon {
+  background: #4caf50;
+}
+.desktop .item .title {
+  margin-left: 10px;
+}
+.desktop .item .title .btn {
+  margin-left: 10px;
+
+  /* 以下复制于bs */
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.desktop .item .title .btn:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.desktop .item .desc {
+  margin: 10px;
+}
+
+.history-container {
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+.history-container .title {
+  height: 42px;
+  line-height: 42px;
+  padding-left: 20px;
+  border-bottom: 2px solid #f3f4f9;
+  border-radius: 3px;
+  background: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.history-container ul {
+  background: #fff;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.history .history-item {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.history .history-item:hover {
+  background: #ff9800;
+  color: #fff;
+}
+
+.history .history-item a {
+  display: inline-block;
+  max-width: 210px;
+  overflow: hidden; /* 超出的文本隐藏 */
+  text-overflow: ellipsis; /* 溢出用省略号显示 */
+  white-space: nowrap; /* 溢出不换行 */
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+  display: none !important;
+}
+
+/*
+* Hide only visually, but have it available for screen readers:
+* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+*
+* 1. For long content, line feeds are not interpreted as spaces and small width
+*    causes content to wrap 1 word per line:
+*    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+*/
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap; /* 1 */
+}
+
+/*
+* Extends the .visuallyhidden class to allow the element
+* to be focusable when navigated to via the keyboard:
+* https://www.drupal.org/node/897638
+*/
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+  white-space: inherit;
+}
+
+/*
+* Hide visually and from screen readers, but maintain layout
+*/
+
+.invisible {
+  visibility: hidden;
+}
+
+/*
+* Clearfix: contain floats
+*
+* For modern browsers
+* 1. The space content is one way to avoid an Opera bug when the
+*    `contenteditable` attribute is included anywhere else in the document.
+*    Otherwise it causes space to appear at the top and bottom of elements
+*    that receive the `clearfix` class.
+* 2. The use of `table` rather than `block` is only necessary if using
+*    `:before` to contain the top-margins of child elements.
+*/
+
+.clearfix:before,
+.clearfix:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important; /* Black prints faster */
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

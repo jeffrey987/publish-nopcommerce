@@ -1,0 +1,7 @@
+﻿{
+  "SystemName": "Desktop",
+  "FriendlyName": "办公桌面",
+  "SupportRTL": true,
+  "PreviewImageUrl": "~/Themes/Desktop/preview.png",
+  "PreviewText": "The 'Desktop' site theme"
+}
