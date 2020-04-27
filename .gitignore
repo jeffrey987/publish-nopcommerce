@@ -168,4 +168,5 @@ glob:*.user
 pubilsh/Plugins/*
 pubilsh/wwwroot/*
 pubilsh/App_Data/*
+pubilsh/Themes/*
 
